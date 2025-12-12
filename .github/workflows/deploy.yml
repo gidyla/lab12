@@ -1,4 +1,5 @@
 name: Deploy Flask App to EC2
+
 on:
   push:
     branches: [ main ]
@@ -6,6 +7,7 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v4
 
@@ -18,13 +20,14 @@ jobs:
       - name: Deploy to EC2
         run: |
           ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }} << 'EOF'
-            cd /home/ubuntu/lab4db/app
+            cd /home/ubuntu/lab1/lab4/lab4/app
             git pull
-            cd app
-            source venv/bin/activate
-            cd lab4db/app
-            pip install -r requirements.txt
-            pip install werkzeug==2.3.7
-            pip install --upgrade flask sqlalchemy flask-sqlalchemy alembic
+            source ../../venv/bin/activate
+            python -m pip install --upgrade pip
+            python -m pip install -r app/requirements.txt
+            python -m pip install werkzeug==2.3.7
+            python -m pip install --upgrade flask sqlalchemy flask-sqlalchemy alembic
+            sudo systemctl daemon-reload
             sudo systemctl restart lab1
           EOF
+
