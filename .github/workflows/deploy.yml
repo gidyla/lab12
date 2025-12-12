@@ -18,7 +18,7 @@ jobs:
       - name: Deploy to EC2
         run: |
           ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }} << 'EOF'
-            cd /home/ec2-user/lab4db/app
+            cd /home/ubuntu/lab4db/app
             git pull
             cd app
             source venv/bin/activate
