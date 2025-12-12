@@ -1,0 +1,2 @@
+database:
+  uri: "mysql://admin:admin123@database-1.cs180sq669wj.us-east-1.rds.amazonaws.com/lab1"
