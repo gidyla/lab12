@@ -164,21 +164,21 @@ def update_alert(alert_id):
 
 @alert_bp.route('/alert/<int:alert_id>', methods=['DELETE'])
 def delete_alert(alert_id):
-    """
-    Delete an alert
-    ---
-    tags:
-      - Alerts
-    parameters:
-      - name: alert_id
-        in: path
-        type: integer
-        required: true
-        description: ID of the alert
-    responses:
-      204:
-        description: Alert deleted successfully
-      404:
-        description: Alert not found
-    """
+    # """
+    # Delete an alert
+    # ---
+    # tags:
+    #   - Alerts
+    # parameters:
+    #   - name: alert_id
+    #     in: path
+    #     type: integer
+    #     required: true
+    #     description: ID of the alert
+    # responses:
+    #   204:
+    #     description: Alert deleted successfully
+    #   404:
+    #     description: Alert not found
+    # """
     return alert_controller.delete(alert_id)
